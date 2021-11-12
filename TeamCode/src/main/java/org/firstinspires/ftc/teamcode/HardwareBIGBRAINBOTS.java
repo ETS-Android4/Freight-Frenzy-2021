@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-public class HardwareBIGBRINBOTS {
+public class HardwareBIGBRAINBOTS {
     public DcMotor FrontLeftDrive = null;
     public DcMotor FrontRightDrive = null;
     public DcMotor RearLeftDrive = null;
@@ -15,7 +15,7 @@ public class HardwareBIGBRINBOTS {
     private ElapsedTime period = new ElapsedTime();
 
     /* Constructor */
-    public HardwareBIGBRINBOTS(){
+    public HardwareBIGBRAINBOTS(){
 
     }
 

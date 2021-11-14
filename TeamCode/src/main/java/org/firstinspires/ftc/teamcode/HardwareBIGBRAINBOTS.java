@@ -27,7 +27,7 @@ public class HardwareBIGBRAINBOTS {
         FrontRightDrive = hwMap.get(DcMotor.class, "FR_DCmotor");
         RearLeftDrive = hwMap.get(DcMotor.class,"RL_DCmotor");
         RearRightDrive = hwMap.get(DcMotor.class,"RR_DCmotor");
-        Flywheel = hwMap.get(DcMotor.class, "Flywheel");
+        Flywheel = hwMap.get(DcMotor.class, "CarouselMotor");
 
         FrontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         FrontRightDrive.setDirection(DcMotor.Direction.REVERSE);

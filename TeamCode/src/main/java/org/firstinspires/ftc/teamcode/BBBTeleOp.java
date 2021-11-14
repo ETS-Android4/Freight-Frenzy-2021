@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 
+@TeleOp
 public class BBBTeleOp extends LinearOpMode {
     HardwareBIGBRAINBOTS robot   = new HardwareBIGBRAINBOTS();   // Use BIGBRAINBOTS's hardware
 
@@ -24,7 +25,7 @@ public class BBBTeleOp extends LinearOpMode {
             double FRPower = Range.clip(drive - strafe - turn, -1.0, 1.0);
             double BLPower = Range.clip(drive - strafe + turn, -1.0, 1.0);
             double BRPower = Range.clip(drive + strafe - turn, -1.0, 1.0);
-            boolean wheelSpin = gamepad2.a;
+            boolean wheelSpin = gamepad1.a;
             robot.FrontLeftDrive.setPower(FLPower);
             robot.FrontRightDrive.setPower(FRPower);
             robot.RearLeftDrive.setPower(BLPower);

@@ -10,7 +10,7 @@ public class BBBTeleOp extends LinearOpMode {
     HardwareBIGBRAINBOTS robot   = new HardwareBIGBRAINBOTS();   // Use BIGBRAINBOTS's hardware
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
         robot.init(this.hardwareMap);
 
         telemetry.addData("Mode", "waiting");
@@ -19,8 +19,12 @@ public class BBBTeleOp extends LinearOpMode {
         waitForStart();
         while (opModeIsActive()) {
             double drive = gamepad1.left_stick_y;
-            double strafe = -gamepad1.right_stick_x;
-            double turn = -gamepad1.left_stick_x;
+            double strafe = -gamepad1.left_stick_x;
+            double turn = -gamepad1.right_stick_x;
+
+            if(Math.abs(strafe)<0.2){
+                strafe=0;
+            }
             boolean turncarousel = gamepad1.x;
             boolean turnIntake = gamepad1.a;
             boolean reverseIntake = gamepad1.b;

@@ -21,7 +21,7 @@ public class AutonomousBBB extends LinearOpMode {
         robot.init(this.hardwareMap);
 
         waitForStart();
-        robot.gyroTurn(0.5, 90, 0.01);
+        robot.gyroTurn(0.5, 90, 0.001);
         sleep(30);
         telemetry.addData("strafe", "finished");
         telemetry.update();

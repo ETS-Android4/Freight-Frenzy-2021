@@ -203,7 +203,7 @@ public class HardwareBIGBRAINBOTS {
         double leftSpeed, rightSpeed;
         boolean onTarget = false;
         error = getError(angle);
-        while (Math.abs(error) > 10 ){
+        while (Math.abs(error) > 1 ){
             steer = Range.clip(coeff * error, -speed, speed);
             rightSpeed = steer;
             leftSpeed = -rightSpeed;

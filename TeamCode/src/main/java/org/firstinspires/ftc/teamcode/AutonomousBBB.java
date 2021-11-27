@@ -19,8 +19,9 @@ public class AutonomousBBB extends LinearOpMode {
         robot.init(this.hardwareMap);
 
         waitForStart();
-        robot.drive(0.5, 10);
-        sleep(10);
+        //robot.drive(-1, 500);
+        //sleep(30);
+        robot.drive(1, 500);
         telemetry.addData("drive", "finished");
         telemetry.update();
     }

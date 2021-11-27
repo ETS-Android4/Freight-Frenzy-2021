@@ -69,7 +69,6 @@ public class HardwareBIGBRAINBOTS {
     }
 
     public void drive(double power, int EncoderCounts) {
-        power *= -1;
         FrontLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         FrontRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         RearLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

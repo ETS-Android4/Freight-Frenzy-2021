@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
@@ -40,10 +41,10 @@ public class HardwareBIGBRAINBOTS {
 
 
 
-        FrontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
-        FrontRightDrive.setDirection(DcMotor.Direction.REVERSE);
-        RearLeftDrive.setDirection(DcMotor.Direction.FORWARD);
-        RearRightDrive.setDirection(DcMotor.Direction.REVERSE);
+        FrontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+        FrontRightDrive.setDirection(DcMotor.Direction.FORWARD);
+        RearLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+        RearRightDrive.setDirection(DcMotor.Direction.FORWARD);
         CarouselMotor.setDirection(DcMotor.Direction.FORWARD);
         IntakeMotor.setDirection(DcMotor.Direction.REVERSE);
 
@@ -89,7 +90,6 @@ public class HardwareBIGBRAINBOTS {
     }
 
     public void drive(double power, int EncoderCounts) {
-        EncoderCounts*=-1;
         FrontLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         FrontRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         RearLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

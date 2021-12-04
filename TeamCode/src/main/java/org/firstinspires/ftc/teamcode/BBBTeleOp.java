@@ -18,9 +18,9 @@ public class BBBTeleOp extends LinearOpMode {
 
         waitForStart();
         while (opModeIsActive()) {
-            double drive = gamepad1.left_stick_y;
-            double strafe = -gamepad1.left_stick_x;
-            double turn = -gamepad1.right_stick_x;
+            double drive = -gamepad1.left_stick_y;
+            double strafe = gamepad1.left_stick_x;
+            double turn = gamepad1.right_stick_x;
 
             if(Math.abs(strafe)<0.2){
                 strafe=0;

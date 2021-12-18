@@ -19,6 +19,8 @@ public class HardwareBIGBRAINBOTS {
     public DcMotor RearRightDrive = null;
     public DcMotor CarouselMotor = null;
     public DcMotor IntakeMotor = null;
+    //public DcMotor ArmMotor = null;
+
     public BNO055IMU imu;
 
     HardwareMap hwMap = null;
@@ -38,6 +40,7 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive = hwMap.get(DcMotor.class, "RR_DCmotor");
         CarouselMotor = hwMap.get(DcMotor.class, "CarouselMotor");
         IntakeMotor = hwMap.get(DcMotor.class, "IntakeMotor");
+        //ArmMotor = hwMap.get(DcMotor.class,"ArmMotor");
 
 
 
@@ -47,6 +50,7 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setDirection(DcMotor.Direction.FORWARD);
         CarouselMotor.setDirection(DcMotor.Direction.FORWARD);
         IntakeMotor.setDirection(DcMotor.Direction.REVERSE);
+        //ArmMotor.setDirection(DcMotor.Direction.FORWARD);
 
         FrontLeftDrive.setPower(0);
         FrontRightDrive.setPower(0);
@@ -54,6 +58,7 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setPower(0);
         CarouselMotor.setPower(0);
         IntakeMotor.setPower(0);
+        //ArmMotor.setPower(0);
 
         FrontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         FrontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -61,6 +66,7 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         CarouselMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         IntakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //ArmMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         FrontLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         FrontRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -68,6 +74,7 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         CarouselMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         IntakeMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         FrontLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         FrontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -75,6 +82,7 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         CarouselMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         IntakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
@@ -276,4 +284,22 @@ public class HardwareBIGBRAINBOTS {
         CarouselMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-}
+    //public void ArmExtention() {
+        //ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+       // ArmMotor.setTargetPosition(EncoderCounts);
+       // ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+       // ArmMotor.setPower(power);
+      //  while (ArmMotor.isBusy()) {
+            //telemetry.addData("Path0", "Starting at %7d :%7d :%7d :%7d",
+            //        FrontLeftDrive.getCurrentPosition(),
+            //            FrontRightDrive.getCurrentPosition(),
+            //          RearLeftDrive.getCurrentPosition(),
+            //        RearRightDrive.getCurrentPosition());
+            //telemetry.update();
+        }
+       // ArmMotor.setPower(0);
+      // ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+    //}
+
+//}

@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class HardwareBIGBRAINBOTS {
@@ -11,6 +13,8 @@ public class HardwareBIGBRAINBOTS {
     public DcMotor RearRightDrive = null;
     public DcMotor CarouselMotor = null;
     public DcMotor IntakeMotor = null;
+    public DcMotor ArmMotor = null;
+    public Servo DumperServo = null;
 
     HardwareMap hwMap = null;
     private ElapsedTime period = new ElapsedTime();
@@ -29,15 +33,17 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive = hwMap.get(DcMotor.class, "RR_DCmotor");
         CarouselMotor = hwMap.get(DcMotor.class, "CarouselMotor");
         IntakeMotor = hwMap.get(DcMotor.class, "IntakeMotor");
+        ArmMotor = hwMap.get(DcMotor.class, "ArmMotor");
+        DumperServo = hwMap.get(Servo.class, "DumperServo");
 
-
-
-        FrontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
-        FrontRightDrive.setDirection(DcMotor.Direction.REVERSE);
-        RearLeftDrive.setDirection(DcMotor.Direction.FORWARD);
-        RearRightDrive.setDirection(DcMotor.Direction.REVERSE);
+        FrontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+        FrontRightDrive.setDirection(DcMotor.Direction.FORWARD);
+        RearLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+        RearRightDrive.setDirection(DcMotor.Direction.FORWARD);
         CarouselMotor.setDirection(DcMotor.Direction.FORWARD);
         IntakeMotor.setDirection(DcMotor.Direction.REVERSE);
+        ArmMotor.setDirection(DcMotor.Direction.FORWARD);
+        DumperServo.setDirection(Servo.Direction.FORWARD);
 
         FrontLeftDrive.setPower(0);
         FrontRightDrive.setPower(0);
@@ -45,6 +51,8 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setPower(0);
         CarouselMotor.setPower(0);
         IntakeMotor.setPower(0);
+        ArmMotor.setPower(0);
+        DumperServo.setPosition(0);
 
         FrontLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         FrontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -52,6 +60,7 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         CarouselMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         IntakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        ArmMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         FrontLeftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         FrontRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -59,6 +68,7 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         CarouselMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         IntakeMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         FrontLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         FrontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -66,6 +76,7 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         CarouselMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         IntakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     public void drive(double power, int EncoderCounts) {

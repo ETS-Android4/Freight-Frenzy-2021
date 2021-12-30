@@ -21,6 +21,7 @@ public class BBBTeleOp extends LinearOpMode {
             double drive = -gamepad1.left_stick_y;
             double strafe = gamepad1.left_stick_x;
             double turn = gamepad1.right_stick_x;
+            double arm = gamepad1.right_trigger - gamepad1.left_trigger;
 
             if(Math.abs(strafe)<0.2){
                 strafe=0;
@@ -28,6 +29,7 @@ public class BBBTeleOp extends LinearOpMode {
             boolean turncarousel = gamepad1.x;
             boolean turnIntake = gamepad1.a;
             boolean reverseIntake = gamepad1.b;
+
             double FLPower = Range.clip(drive + strafe + turn, -1.0, 1.0);
             double FRPower = Range.clip(drive - strafe - turn, -1.0, 1.0);
             double BLPower = Range.clip(drive - strafe + turn, -1.0, 1.0);
@@ -50,6 +52,7 @@ public class BBBTeleOp extends LinearOpMode {
             }else{
                 robot.IntakeMotor.setPower(0);
             }
+            //robot.ArmMotor.setPower(0);
 
             telemetry.addData("Mode", "Running");
             telemetry.addData("Power", "Frontleft=%.3f, Frontright=%.3f", FLPower, FRPower);

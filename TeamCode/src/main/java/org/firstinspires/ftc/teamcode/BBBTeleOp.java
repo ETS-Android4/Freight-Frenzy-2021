@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 @TeleOp
 public class BBBTeleOp extends LinearOpMode {
     HardwareBIGBRAINBOTS robot   = new HardwareBIGBRAINBOTS();   // Use BIGBRAINBOTS's hardware
-
+    double DumperPos=0.0;
     @Override
     public void runOpMode() {
         robot.init(this.hardwareMap);
@@ -17,7 +17,7 @@ public class BBBTeleOp extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
-        double DumperPos = 0.0;
+
         while (opModeIsActive()) {
 
             double drive = -gamepad1.right_stick_y;
@@ -38,9 +38,9 @@ public class BBBTeleOp extends LinearOpMode {
             double BLPower = Range.clip(drive + strafe + turn, -1.0, 1.0);
             double BRPower = Range.clip(drive - strafe - turn, -1.0, 1.0);
 
-            if(gamepad2.dpad_right) DumperPos=0.0;
-            if(gamepad2.dpad_up) DumperPos=0.333;
-            if(gamepad2.dpad_left) DumperPos=1.0;
+            if(gamepad2.dpad_right){ DumperPos=0.0;}
+            if(gamepad2.dpad_up){ DumperPos=0.5;}
+            if(gamepad2.dpad_left){ DumperPos=1;}
 
             robot.DumperServo.setPosition(DumperPos);
 

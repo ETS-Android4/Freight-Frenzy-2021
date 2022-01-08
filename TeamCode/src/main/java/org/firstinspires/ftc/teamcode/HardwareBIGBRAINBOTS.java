@@ -48,7 +48,7 @@ public class HardwareBIGBRAINBOTS {
         FrontRightDrive.setDirection(DcMotor.Direction.FORWARD);
         RearLeftDrive.setDirection(DcMotor.Direction.REVERSE);
         RearRightDrive.setDirection(DcMotor.Direction.FORWARD);
-        CarouselMotor.setDirection(DcMotor.Direction.FORWARD);
+        CarouselMotor.setDirection(DcMotor.Direction.REVERSE);
         IntakeMotor.setDirection(DcMotor.Direction.REVERSE);
         ArmMotor.setDirection(DcMotor.Direction.FORWARD);
         DumperServo.setDirection(Servo.Direction.FORWARD);
@@ -205,39 +205,33 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-    public void turncarousel(double power, int EncoderCounts) {
-        CarouselMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        CarouselMotor.setTargetPosition(EncoderCounts);
-        CarouselMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        CarouselMotor.setPower(power);
-        //while (CarouselMotor.isBusy()) {
-            //telemetry.addData("Path0", "Starting at %7d :%7d :%7d :%7d",
-            //        FrontLeftDrive.getCurrentPosition(),
-            //            FrontRightDrive.getCurrentPosition(),
-            //          RearLeftDrive.getCurrentPosition(),
-            //        RearRightDrive.getCurrentPosition());
-            //telemetry.update();
-        //}
-        //CarouselMotor.setPower(0);
-        CarouselMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-    }
-
     public void runIntake(double power, int EncoderCounts) {
         IntakeMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         IntakeMotor.setTargetPosition(EncoderCounts);
         IntakeMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         IntakeMotor.setPower(power);
         //CarouselMotor.setPower(0);
-        CarouselMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        IntakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+    public void extendArm(double power, int EncoderCounts) {
+        ArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        ArmMotor.setTargetPosition(EncoderCounts);
+        ArmMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        ArmMotor.setPower(power);
+        while(ArmMotor.isBusy()) {
+            //empty
+        }
+        ArmMotor.setPower(0);
+        ArmMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     public void stopIntake() {
         IntakeMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         IntakeMotor.setTargetPosition(0);
         IntakeMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        CarouselMotor.setPower(0);
-        CarouselMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        IntakeMotor.setPower(0);
+        IntakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     public void gyroTurn(double speed, double angle,double coeff) {

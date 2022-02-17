@@ -62,7 +62,9 @@ public class AutonomousBBB extends LinearOpMode {
         });
 
         robot.init(this.hardwareMap);
+        robot.extendArm(1, -100);
         robot.DumperServo.setPosition(0.5);
+        robot.extendArm(1, 100);
 
         waitForStart();
         DuckPosition position = pipeline.getAnalysis();
@@ -85,10 +87,10 @@ public class AutonomousBBB extends LinearOpMode {
             robot.extendArm(1, -2000);
         }
         if(position==DuckPosition.CENTER) {
-            robot.extendArm(1, -3000);
+            //robot.extendArm(1, -3000);
         }
         if(position==DuckPosition.RIGHT) {
-            robot.extendArm(1, -4000);
+            //robot.extendArm(1, -4000);
         }
 
         robot.drive(1,(int)(-19*COUNTS_PER_INCH));

@@ -79,19 +79,19 @@ public class AutoBlue extends LinearOpMode {
         robot.gyroTurn(1, 90, 0.01);
 
         robot.drive(0.6,(int)(-10*COUNTS_PER_INCH));
-        robot.strafe(0.2,(int)(3.3*STRAFE_COUNTS_PER_INCH));
+        robot.strafe(0.2,(int)(3.75*STRAFE_COUNTS_PER_INCH));
 
 
-        robot.CarouselMotor.setPower(-0.1);
+        robot.CarouselMotor.setPower(-0.09);
         sleep(3000);
         robot.CarouselMotor.setPower(0);
 
         robot.strafe(0.2,(int)(-4.5*STRAFE_COUNTS_PER_INCH));
         robot.gyroTurn(1, 90, 0.01);
         robot.drive(0.2,(int)(-(0.5)*COUNTS_PER_INCH));
-        robot.drive(0.7,(int)((24*2 +6)*COUNTS_PER_INCH));
+        robot.drive(0.7,(int)((24*2-1 +6)*COUNTS_PER_INCH));
         robot.gyroTurn(1, 180, 0.01);
-        robot.drive(0.3,(int)((-8.3)*COUNTS_PER_INCH));
+        robot.drive(0.3,(int)((-9)*COUNTS_PER_INCH));
 
 
         if(position== DuckPosition.LEFT) {

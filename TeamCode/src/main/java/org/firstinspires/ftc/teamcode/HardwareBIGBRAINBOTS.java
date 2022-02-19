@@ -205,9 +205,9 @@ public class HardwareBIGBRAINBOTS {
         RearRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-    public void runIntake(double power, int EncoderCounts) {
+    public void runIntake(double power) {
         IntakeMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        IntakeMotor.setTargetPosition(EncoderCounts);
+        IntakeMotor.setTargetPosition(1);
         IntakeMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         IntakeMotor.setPower(power);
         //CarouselMotor.setPower(0);

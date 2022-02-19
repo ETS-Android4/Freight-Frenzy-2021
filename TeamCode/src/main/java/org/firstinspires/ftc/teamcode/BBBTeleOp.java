@@ -18,7 +18,7 @@ public class BBBTeleOp extends LinearOpMode {
         final int MAX_ARM_POS = -2700;
         final int MIN_ARM_POS = -0;
 
-
+        String dumperState = "down";
         waitForStart();
 
 
@@ -42,7 +42,10 @@ public class BBBTeleOp extends LinearOpMode {
             double BLPower = Range.clip(drive + strafe + turn, -1.0, 1.0);
             double BRPower = Range.clip(drive - strafe - turn, -1.0, 1.0);
             if (gamepad2.left_bumper){
+
+
                 robot.CarouselMotor.setPower(0.1);
+
             }else if (gamepad2.right_bumper) {
                 robot.CarouselMotor.setPower(-0.1);
             }else{
@@ -51,9 +54,36 @@ public class BBBTeleOp extends LinearOpMode {
             dumperPos-= gamepad2.right_stick_y/120;
 
 
-            if(gamepad2.dpad_left){ dumperPos=0.0;}
-            if(gamepad2.dpad_up){ dumperPos=0.5;}
-            if(gamepad2.dpad_right){ dumperPos=1;}
+            if(gamepad2.dpad_left){
+                dumperPos=0.0;
+                dumperState = "left";
+            }
+            if(gamepad2.dpad_up){
+                dumperState ="up";
+            }
+            if(gamepad2.dpad_right){
+                if(robot.ArmMotor.getCurrentPosition()<-1100){
+                    dumperPos=1;
+                    dumperState = "dump";
+                }
+            }
+            switch (dumperState){
+                case "up":
+                    dumperPos = (0.5-dumperPos)/20 + dumperPos;
+                    if(gamepad2.dpad_up){
+                        //dumperPos=0.5;
+                    }
+                    break;
+
+                case "left":
+
+                    break;
+
+                case "dump":
+                    break;
+
+
+            }
 
             if(dumperPos<0) {
                 dumperPos=0;

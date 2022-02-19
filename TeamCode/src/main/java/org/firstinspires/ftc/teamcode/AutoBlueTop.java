@@ -86,7 +86,7 @@ public class AutoBlueTop extends LinearOpMode {
         telemetry.addData("Analysis", position);
         telemetry.update();
 
-        robot.drive(0.9,(int)(16*COUNTS_PER_INCH));
+        robot.drive(0.9,(int)(15.5*COUNTS_PER_INCH));
 
         robot.strafe(0.9,(int)(-26*STRAFE_COUNTS_PER_INCH));
 
@@ -126,7 +126,14 @@ public class AutoBlueTop extends LinearOpMode {
         robot.drive(1,(int)(12*COUNTS_PER_INCH));
         robot.gyroTurn(1, 90, 0.01);
         robot.strafe(0.6, (int)(11*STRAFE_COUNTS_PER_INCH));
-        robot.drive(1,(int)(56*COUNTS_PER_INCH));
+
+
+        //robot.drive(1,(int)(56*COUNTS_PER_INCH));
+        //test from here
+        robot.drive(1,(int)(44*COUNTS_PER_INCH));
+        robot.DumperServo.setPosition(0);
+        robot.runIntake(0.5);
+        robot.drive(0.8,(int)(12*COUNTS_PER_INCH));
 
 
         telemetry.addData("program", "finished");

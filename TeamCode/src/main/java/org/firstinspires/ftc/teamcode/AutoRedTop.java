@@ -222,15 +222,15 @@ public class AutoRedTop extends LinearOpMode {
              * was crunched)
              */
 
-              inputToCa(firstFrame);    // For Red alliance
+              inputToCb(firstFrame);    // For Red alliance
             /*
              * Submats are a persistent reference to a region of the parent
              * buffer. Any changes to the child affect the parent, and the
              * reverse also holds true.
              */
-             region1_Ca = Ca.submat(new Rect(region1_pointA, region1_pointB));
-             region2_Ca = Ca.submat(new Rect(region2_pointA, region2_pointB));
-             region3_Ca = Ca.submat(new Rect(region3_pointA, region3_pointB));
+             region1_Cb = Cb.submat(new Rect(region1_pointA, region1_pointB));
+             region2_Cb = Cb.submat(new Rect(region2_pointA, region2_pointB));
+             region3_Cb = Cb.submat(new Rect(region3_pointA, region3_pointB));
         }
 
         @Override
@@ -246,9 +246,9 @@ public class AutoRedTop extends LinearOpMode {
              * pixel value of the 3-channel image, and referenced the value
              * at index 2 here.
              */
-             avg1 = (int) Core.mean(region1_Ca).val[0];
-             avg2 = (int) Core.mean(region2_Ca).val[0];
-             avg3 = (int) Core.mean(region3_Ca).val[0];
+             avg1 = (int) Core.mean(region1_Cb).val[0];
+             avg2 = (int) Core.mean(region2_Cb).val[0];
+             avg3 = (int) Core.mean(region3_Cb).val[0];
             /*
              * Draw a rectangle showing sample region 1 on the screen.
              * Simply a visual aid. Serves no functional purpose.
@@ -287,14 +287,14 @@ public class AutoRedTop extends LinearOpMode {
              * Find the minimum of the 3 averages
              */
 
-            int minOneTwo = Math.min(avg1,avg2);
-            int min = Math.min(minOneTwo,avg3);
+            int maxOneTwo = Math.max(avg1,avg2);
+            int max = Math.max(maxOneTwo,avg3);
 
             /*
              * Now that we found the max, we actually need to go and
              * figure out which sample region that value was from
              */
-            if(min == avg1) // Was it from region 1?
+            if(max == avg1) // Was it from region 1?
             {
                 position = DuckPosition.LEFT; // Record our analysis
 
@@ -309,7 +309,7 @@ public class AutoRedTop extends LinearOpMode {
                         GREEN, // The color the rectangle is drawn in
                         -1); // Negative thickness means solid fill
             }
-            else if (min == avg2) // Was it from region 2?
+            else if (max == avg2) // Was it from region 2?
             {
                 position = DuckPosition.CENTER; // Record our analysis
 
@@ -324,7 +324,7 @@ public class AutoRedTop extends LinearOpMode {
                         GREEN, // The color the rectangle is drawn in
                         -1); // Negative thickness means solid fill
             }
-            else if(min == avg3) // Was it from region 3?
+            else if(max == avg3) // Was it from region 3?
             {
                 position = DuckPosition.RIGHT; // Record our analysis
                 /*

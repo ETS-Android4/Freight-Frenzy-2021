@@ -238,7 +238,7 @@ public class AutoRedTop extends LinearOpMode {
         {
 
             // Get the Cb or Ca channel of the input frame after conversion to LAB
-             inputToCa(input);
+             inputToCb(input);
             /*
              * Compute the average pixel value of each submat region. We're
              * taking the average of a single channel buffer, so the value

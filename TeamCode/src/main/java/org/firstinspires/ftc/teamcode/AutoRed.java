@@ -37,7 +37,7 @@ public class AutoRed extends LinearOpMode {
         final double WHEEL_DIAMETER_INCHES = 4;
         final double COUNTS_PER_INCH = 44.64;
         final double STRAFE_COUNTS_PER_INCH = 49.02;
-        final int MID = 1950;
+        final int MID = 1920;
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webCam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class,"Webcam 1"),cameraMonitorViewId);
@@ -74,7 +74,7 @@ public class AutoRed extends LinearOpMode {
         robot.strafe(0.8,(int)(24*STRAFE_COUNTS_PER_INCH));
         robot.drive(0.3, (int)(-4.5*COUNTS_PER_INCH));
 
-        robot.CarouselMotor.setPower(0.1);
+        robot.CarouselMotor.setPower(0.08);
         sleep(3000);
         robot.CarouselMotor.setPower(0);
 

@@ -36,8 +36,12 @@ public class AutoRedTop extends LinearOpMode {
         final double DRIVE_GEAR_REDUCTION  =1;
         final double WHEEL_DIAMETER_INCHES = 4;
         final double COUNTS_PER_INCH = 44.64;
+
         final double STRAFE_COUNTS_PER_INCH = 49.02;
-        final int MID = 2180;
+
+        final int LOW = 1250;
+        final int MID = 2000;
+        final int HI = 2730;
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webCam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class,"Webcam 1"),cameraMonitorViewId);
@@ -83,36 +87,36 @@ public class AutoRedTop extends LinearOpMode {
         telemetry.addData("Analysis", position);
         telemetry.update();
 
-        robot.drive(0.9,(int)(16*COUNTS_PER_INCH));
-        robot.strafe(0.9,(int)(20*STRAFE_COUNTS_PER_INCH));
+        robot.drive(0.8,(int)(16*COUNTS_PER_INCH));
+        robot.strafe(0.8,(int)(20*STRAFE_COUNTS_PER_INCH));
 
         robot.gyroTurn(1, 180, 0.01);
         robot.drive(0.5,(int)(-4*COUNTS_PER_INCH));
 
         if(position== DuckPosition.LEFT) {
             //robot.drive(1,(int)(6*COUNTS_PER_INCH));
-            robot.extendArm(1, -1200);
+            robot.extendArm(1, -LOW);
         }
         if(position== DuckPosition.CENTER){
             robot.extendArm(1, -MID);
         }
         if(position== DuckPosition.RIGHT) {
             //robot.drive(0.2,(int)(-1*COUNTS_PER_INCH));
-            robot.extendArm(1, -2700);
+            robot.extendArm(1, -HI);
         }
         robot.DumperServo.setPosition(1);
         sleep(500);
         robot.DumperServo.setPosition(0.5);
         if(position== DuckPosition.LEFT) {
             //robot.drive(1,(int)(6*COUNTS_PER_INCH));
-            robot.extendArm(1, 1200);
+            robot.extendArm(1, LOW);
         }
         if(position== DuckPosition.CENTER){
             robot.extendArm(1, MID);
         }
         if(position== DuckPosition.RIGHT) {
             //robot.drive(0.2,(int)(-1*COUNTS_PER_INCH));
-            robot.extendArm(1, 2700);
+            robot.extendArm(1, HI);
         }
 
         robot.drive(1,(int)(12*COUNTS_PER_INCH));

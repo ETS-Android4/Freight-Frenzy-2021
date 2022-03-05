@@ -38,7 +38,9 @@ public class AutoBlueTop extends LinearOpMode {
         final double WHEEL_DIAMETER_INCHES = 4;
         final double COUNTS_PER_INCH = 44.64;
         final double STRAFE_COUNTS_PER_INCH = 49.02;
-        final int MID = 1850;
+        final int LOW = 1270;
+        final int MID = 1965;
+        final int HI = 2750;
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webCam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class,"Webcam 1"),cameraMonitorViewId);
@@ -96,7 +98,7 @@ public class AutoBlueTop extends LinearOpMode {
         //SHIFTED TO ACCOUNT FOR THE FACT CAMERA CAN'T SEE ALL PLACES
         if(position== DuckPosition.LEFT) {
             //robot.drive(1,(int)(6*COUNTS_PER_INCH));
-            robot.extendArm(1, -1200);
+            robot.extendArm(1, -LOW);
         }
         if(position== DuckPosition.CENTER){
 
@@ -104,7 +106,7 @@ public class AutoBlueTop extends LinearOpMode {
         }
         if(position== DuckPosition.RIGHT) {
             //robot.drive(0.2,(int)(-1*COUNTS_PER_INCH));
-            robot.extendArm(1, -2700);
+            robot.extendArm(1, -HI);
         }
         robot.DumperServo.setPosition(1);
         sleep(500);
@@ -112,7 +114,7 @@ public class AutoBlueTop extends LinearOpMode {
         //SHIFTED TO ACCOUNT FOR THE FACT CAMERA CAN'T SEE ALL PLACES
         if(position== DuckPosition.LEFT) {
             //robot.drive(1,(int)(6*COUNTS_PER_INCH));
-            robot.extendArm(1, 1200);
+            robot.extendArm(1, LOW);
         }
         if(position== DuckPosition.CENTER){
 
@@ -120,7 +122,7 @@ public class AutoBlueTop extends LinearOpMode {
         }
         if(position== DuckPosition.RIGHT) {
             //robot.drive(0.2,(int)(-1*COUNTS_PER_INCH));
-            robot.extendArm(1, 2700);
+            robot.extendArm(1, HI);
         }
 
         robot.drive(1,(int)(12*COUNTS_PER_INCH));
@@ -128,12 +130,15 @@ public class AutoBlueTop extends LinearOpMode {
         robot.strafe(0.6, (int)(11*STRAFE_COUNTS_PER_INCH));
 
 
-        //robot.drive(1,(int)(56*COUNTS_PER_INCH));
+        robot.drive(1,(int)(56*COUNTS_PER_INCH));
         //test from here
+        /*
         robot.drive(1,(int)(44*COUNTS_PER_INCH));
         robot.DumperServo.setPosition(0);
         robot.runIntake(0.5);
         robot.drive(0.8,(int)(12*COUNTS_PER_INCH));
+
+         */
 
 
         telemetry.addData("program", "finished");

@@ -40,7 +40,7 @@ public class AutoBlue extends LinearOpMode {
         final double STRAFE_COUNTS_PER_INCH = 49.02;
         final int LOW = 1230;
         final int MID = 1970;
-        final int HI = 2700;
+        final int HI = 2730;
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webCam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class,"Webcam 1"),cameraMonitorViewId);
@@ -93,7 +93,7 @@ public class AutoBlue extends LinearOpMode {
         robot.drive(0.2,(int)(-(0.5)*COUNTS_PER_INCH));
         robot.drive(0.7,(int)((24*2-1 +6)*COUNTS_PER_INCH));
         robot.gyroTurn(1, 180, 0.01);
-        robot.drive(0.3,(int)((-9)*COUNTS_PER_INCH));
+        robot.drive(0.3,(int)((-9.4)*COUNTS_PER_INCH));
 
 
         if(position== DuckPosition.LEFT) {

@@ -17,6 +17,10 @@ public class BBBTeleOp extends LinearOpMode {
         telemetry.update();
         final int MAX_ARM_POS = -2700;
         final int MIN_ARM_POS = -0;
+        final int AUTO_TURN_THRESH = -550;
+
+        boolean downTransition = false;
+        boolean upTransition = false;
 
         String dumperState = "down";
         waitForStart();
@@ -54,6 +58,8 @@ public class BBBTeleOp extends LinearOpMode {
             dumperPos-= gamepad2.right_stick_y/120;
 
 
+
+
             if(gamepad2.dpad_left){
                 dumperPos=0.0;
                 dumperState = "left";
@@ -76,10 +82,14 @@ public class BBBTeleOp extends LinearOpMode {
                     break;
 
                 case "left":
-
+                    dumperPos=0.0;
                     break;
 
                 case "dump":
+                    if(robot.ArmMotor.getCurrentPosition()<-1100){
+                        dumperPos=1;
+                        dumperState = "dump";
+                    }
                     break;
 
 
@@ -103,6 +113,22 @@ public class BBBTeleOp extends LinearOpMode {
 
             //boolean canGoUp =robot.ArmMotor.getCurrentPosition()>=MAX_ARM_POS && armPower<0;
             //boolean canGoDown = robot.ArmMotor.getCurrentPosition()>=MAX_ARM_POS && armPower>0;
+
+            //automatic turning
+            if(robot.ArmMotor.getCurrentPosition()>AUTO_TURN_THRESH && downTransition==false) {
+                downTransition = true;
+                upTransition = false;
+
+                dumperState = "left";
+            }
+
+            if(robot.ArmMotor.getCurrentPosition()<AUTO_TURN_THRESH && upTransition==false) {
+                downTransition = false;
+                upTransition = true
+                ;
+
+                dumperState = "up";
+            }
 
             if(robot.ArmMotor.getCurrentPosition()>=MAX_ARM_POS) {
                 telemetry.addData("Go up", "Yes");
